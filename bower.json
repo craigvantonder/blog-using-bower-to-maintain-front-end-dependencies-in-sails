@@ -1,0 +1,18 @@
+{
+  "name": "blog-using-bower-to-maintain-front-end-dependencies-in-sails",
+  "description": "A simple example on using Bower to maintain front-end dependencies in a Sails application.",
+  "main": "app.js",
+  "authors": [
+    "Craig van Tonder"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/craigvantonder/blog-using-bower-to-maintain-front-end-dependencies-in-sails",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

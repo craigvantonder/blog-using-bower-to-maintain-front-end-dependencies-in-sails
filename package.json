@@ -2,7 +2,7 @@
   "name": "blog-using-bower-to-maintain-front-end-dependencies-in-sails",
   "private": true,
   "version": "0.0.0",
-  "description": "a Sails application",
+  "description": "A simple example on using Bower to maintain front-end dependencies in a Sails application.",
   "keywords": [],
   "dependencies": {
     "bower": "^1.7.9",
@@ -31,8 +31,8 @@
   "main": "app.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/root/blog-using-bower-to-maintain-front-end-dependencies-in-sails.git"
+    "url": "git://github.com/craigvantonder/blog-using-bower-to-maintain-front-end-dependencies-in-sails.git"
   },
-  "author": "root",
+  "author": "Craig van Tonder",
   "license": ""
 }

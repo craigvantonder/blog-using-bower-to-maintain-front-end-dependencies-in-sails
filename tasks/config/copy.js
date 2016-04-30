@@ -1,29 +1,65 @@
 /**
- * `copy`
+ * Copy files and folders.
  *
  * ---------------------------------------------------------------
  *
- * Copy files and/or folders from your `assets/` directory into
- * the web root (`.tmp/public`) so they can be served via HTTP,
- * and also for further pre-processing by other Grunt tasks.
+ * # dev task config
+ * Copies all directories and files, exept coffescript and less fiels, from the sails
+ * assets folder into the .tmp/public directory.
  *
- * #### Normal usage (`sails lift`)
- * Copies all directories and files (except CoffeeScript and LESS)
- * from the `assets/` folder into the web root -- conventionally a
- * hidden directory located `.tmp/public`.
- *
- * #### Via the `build` tasklist (`sails www`)
- * Copies all directories and files from the .tmp/public directory into a www directory.
+ * # build task config
+ * Copies all directories nd files from the .tmp/public directory into a www directory.
  *
  * For usage docs see:
- *   https://github.com/gruntjs/grunt-contrib-copy
- *
+ *    https://github.com/gruntjs/grunt-contrib-copy
  */
+
+// Create the fonts folder before running the copy task
+module.exports = function(grunt) {
+  grunt.file.mkdir('./assets/fonts', 0755);
+};
+
 module.exports = function(grunt) {
 
   grunt.config.set('copy', {
     dev: {
-      files: [{
+      files: [
+      // JavaScript
+      {
+        expand: true,
+        cwd: './bower_components',
+        src: [
+        'jquery/dist/jquery.js',
+        'bootstrap/dist/js/bootstrap.js'
+        ],
+        flatten: true,
+        dest: 'assets/js/dependencies'
+      },
+      // CSS
+      {
+        expand: true,
+        cwd: './bower_components',
+        src: [
+        'bootstrap/dist/css/bootstrap.css',
+        'bootstrap/dist/css/bootstrap.css.map'
+        ],
+        flatten: true,
+        dest: 'assets/styles'
+      },
+      // Fonts
+      {
+        expand: true,
+        cwd: './bower_components',
+        src: [
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.eot',
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.svg',
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.ttf',
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.woff',
+        'bootstrap/dist/fonts/glyphicons-halflings-regular.woff2'
+        ],
+        flatten: true,
+        dest: 'assets/fonts'
+      },{
         expand: true,
         cwd: './assets',
         src: ['**/*.!(coffee|less)'],
@@ -38,7 +74,7 @@ module.exports = function(grunt) {
         dest: 'www'
       }]
     }
-  });
+});
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
+grunt.loadNpmTasks('grunt-contrib-copy');
 };

@@ -17,7 +17,13 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
+
+  // Inject Bootstrap before other stylesheets
+  'styles/bootstrap.css',
+
+  // Other stylesheets are brought in here
   'styles/**/*.css'
+
 ];
 
 
@@ -28,12 +34,19 @@ var jsFilesToInject = [
   // Load sails.io before everything else
   'js/dependencies/sails.io.js',
 
-  // Dependencies like jQuery, or Angular are brought in here
+  // Load jQuery next
+  'js/dependencies/jquery.js',
+
+  // Then Bootstrap
+  'js/dependencies/bootstrap.js',
+
+  // Other dependencies are brought in here
   'js/dependencies/**/*.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
   'js/**/*.js'
+
 ];
 
 
@@ -50,12 +63,6 @@ var templateFilesToInject = [
   'templates/**/*.html'
 ];
 
-
-
-
-
-
-
 // Default path for public folder (see documentation for more information)
 var tmpPath = '.tmp/public/';
 
@@ -71,5 +78,3 @@ module.exports.jsFilesToInject = jsFilesToInject.map(function(jsPath) {
 module.exports.templateFilesToInject = templateFilesToInject.map(function(tplPath) {
   return require('path').join('assets/',tplPath);
 });
-
-
